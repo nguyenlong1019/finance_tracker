@@ -23,6 +23,9 @@ dependencies:
   cloud_firestore: ^5.4.4
   expense_repository:
     path: packages/expense_repository
+  firebase_core: ^3.6.0
+  crypto: ^3.0.5
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
