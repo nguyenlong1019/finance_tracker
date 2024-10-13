@@ -1,3 +1,29 @@
 Tạo firebase project
 Đặt tên finance-tracker 
--> tắt google analysis -> tạo project -> continue
+-> tắt google analysis -> tạo project -> continue 
+
+
+flow
+Đối với việc đăng nhập, đăng ký, đăng xuất ok rồi 
+Hiện tại sẽ tạo category sẵn cho một sô cái để user có thể chọn khi add expense 
+Category sẽ gồm:
+entertainment, 
+food,
+home,
+pet,
+shopping,
+tech,
+travel, 
+other 
+Khi add expense thì sẽ hienr thị 10 expense mới nhất ra trang chủ, 
+add assets sang một trang và hiển thị assets ở một trang 
+biểu đồ thì cần dữ liệu của 7 ngày trước và ngày hiện tại 
+khi bấm đề xuất tiết kiệm cần nhập số tiền cần tiết kiệm, và nhập số tháng tiết kiệm => danh sách đề xuất cắt giảm chi tiêu 
+
+
+Fix:
+thêm CRUD vào các phần như transaction và asset 
+Lưu totalassets và totalexpenses theo tháng luôn vào thông tin của user 
+asset cũng cần cho thêm datetime nhưng sẽ là tự động 
+Sau đó sort theo datetime 
+tính total như thế nào? 

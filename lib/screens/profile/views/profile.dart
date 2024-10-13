@@ -1,11 +1,17 @@
+import 'package:finance_tracker/app_state.dart';
+import 'package:finance_tracker/screens/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appState = Provider.of<ApplicationState>(context, listen: false);
+    print(appState.email);
     return SafeArea(
       child: Column(
         children: [
@@ -47,31 +53,31 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Column(
+          Column(
             children: [
               Text(
-                'NguyenLong02',
+                appState.username ?? 'Unknow username',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 8,),
+              const SizedBox(height: 8,),
               Text(
-                '0123456789',
+                appState.phone ?? '',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w400,
                   color: Colors.grey,
                 ),
               ),
-              SizedBox(height: 8,),
+              const SizedBox(height: 8,),
               Text(
-                'hk2@gmail.com',
+                appState.email ?? '',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w400,
                   color: Colors.grey,
@@ -113,14 +119,23 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-            child: Card(
-              color: Colors.white,
-              child: ListTile(
-                leading: Icon(CupertinoIcons.arrow_clockwise_circle, color: Color(0xFF87A2FF),),
-                title: Text('Logout', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w700),),
-                trailing: Icon(CupertinoIcons.chevron_forward, color: Color(0xFF87A2FF),),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: GestureDetector(
+              onTap: () async {
+                await appState.signOut();
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()),
+                );
+              },
+              child: const Card(
+                color: Colors.white,
+                child: ListTile(
+                  leading: Icon(CupertinoIcons.arrow_clockwise_circle, color: Color(0xFF87A2FF),),
+                  title: Text('Logout', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w700),),
+                  trailing: Icon(CupertinoIcons.chevron_forward, color: Color(0xFF87A2FF),),
+                ),
               ),
             ),
           ),
